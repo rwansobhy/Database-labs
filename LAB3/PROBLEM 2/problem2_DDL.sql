@@ -1,0 +1,44 @@
+CREATE DATABASE Library_Management_System ;
+USE Library_Management_System ;
+CREATE TABLE BOOK(
+book_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(40) NOT NULL,
+price double NOT NULL,
+pub_id INT ,
+category_id INT NOT NULL
+);
+CREATE TABLE CATEGORY (
+category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(40) NOT NULL
+);
+ALTER TABLE BOOK
+ADD FOREIGN KEY(category_id)
+REFERENCES CATEGORY(category_id) ON DELETE CASCADE;
+CREATE TABLE PUBLISHER (
+pub_id INT   AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(40) not null,
+address VARCHAR (255) not null
+);
+ALTER TABLE BOOK
+ADD FOREIGN KEY(pub_id)
+REFERENCES PUBLISHER(pub_id) ON DELETE SET NULL;
+CREATE TABLE MEMEBER (
+member_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(40) NOT NULL,
+address VARCHAR (255),
+join_date DATEtime
+);
+CREATE TABLE BORROWING_BOOK(
+member_id INT  ,
+book_id INT  ,
+borrow_date DATEtime,
+due_date DATEtime ,
+return_date DATEtime,
+primary key (member_id,book_id,borrow_date),
+FOREIGN KEY(book_id) REFERENCES BOOK(book_id) ON DELETE CASCADE,
+FOREIGN KEY(member_id) REFERENCES MEMEBER(member_id) ON DELETE CASCADE
+);
+
+
+ 
+

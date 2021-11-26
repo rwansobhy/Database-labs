@@ -1,0 +1,5 @@
+1- select name from memeber where join_date  '2000-09-01';
+2-select * from memeber where join_date between '1995-10-1' and '2019-10-01';
+ 3-select * from book inner join publisher on publisher.name='Oxford' or book.price between 15 and 20;
+ 4-select title from book inner join borrowing_book on borrowing_book.book_id=book.book_id inner join memeber on borrowing_book.member_id=memeber.member_id and memeber.name='scot reinger';
+5- select name from memeber inner join borrowing_book on borrowing_book.member_id=memeber.member_id between '2019-01-01' and '2019-12-31';
